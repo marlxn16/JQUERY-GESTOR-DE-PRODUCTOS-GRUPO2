@@ -1,5 +1,6 @@
+var productos = [];
+var id_contador = 1;
 // Implementar funcion para agregar productos
-
 // Evento Click 
 $('#btn_agregar').click(function() {
     agregarProducto();
