@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GESTION DE PRODUCTOS</title>
+    
+    <link rel="stylesheet" href="./public/vendor/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container mt-5">
+        
+        <h1 class="text-center mb-4">GESTION DE PRODUCTOS</h1>
+
+        <!-- Formulario -->
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5>Registrar Producto</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="txt_nombre" placeholder="Nombre">
+                            <label for="txt_nombre">Nombre del Producto</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-floating mb-3">
+                            <input type="number" step="0.01" class="form-control" id="txt_precio" placeholder="0.00">
+                            <label for="txt_precio">Precio</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-floating mb-3">
+                            <select class="form-select" id="select_categoria">
+                                <option value="" selected disabled>Seleccione...</option>
+                                <option value="Abarrotes">Abarrotes</option>
+                                <option value="Bebidas">Bebidas</option>
+                                <option value="Limpieza">Limpieza</option>
+                            </select>
+                            <label for="select_categoria">Categoría</label>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button id="btn_agregar" class="btn btn-success w-100" style="height: 58px;">Agregar</button>
+                    </div>
+                </div>
+                
+                <div id="alerta"></div>
+            </div>
+        </div>
+
+        <!-- Agregar sección de filtros y tabla de productos -->
+
+    </div>
+    
+</body>
+</html>
