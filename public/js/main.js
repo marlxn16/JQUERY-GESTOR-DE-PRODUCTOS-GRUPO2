@@ -135,3 +135,31 @@ function mostrarTabla() {
         $('#tabla_productos').append(fila);
     }
 }
+// Implementar funcion para eliminar productos
+
+// Evento Click 
+$('#tabla_productos').on('click', '.btn_eliminar', function() {
+    var id = parseInt($(this).data('id'));
+    eliminarProducto(id);
+});
+
+// Funcion eliminar un producto
+function eliminarProducto(id) {
+    
+    var i = 0;
+    var encontrado = false;
+    
+    while (i < productos.length && !encontrado) {
+        if (productos[i].id === id) {
+            encontrado = true;
+        } else {
+            i++;
+        }
+    }
+
+    if (encontrado) {
+        productos.splice(i, 1);
+        $('#alerta').html('<div class="alert alert-success mt-3">Producto eliminado</div>');
+        mostrarTabla();
+    }
+}
