@@ -40,7 +40,7 @@
                                 <option value="Bebidas">Bebidas</option>
                                 <option value="Limpieza">Limpieza</option>
                             </select>
-                            <label for="select_categoria">Categoría</label>
+                            <label for="select_categoria">Categoria</label>
                         </div>
                     </div>
                     <div class="col-md-2">
@@ -52,9 +52,75 @@
             </div>
         </div>
 
-        <!-- Agregar sección de filtros y tabla de productos -->
-
+<!-- Filtros -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="select_filtro">
+                            <option value="Todos">Todos</option>
+                            <option value="Abarrotes">Abarrotes</option>
+                            <option value="Bebidas">Bebidas</option>
+                            <option value="Limpieza">Limpieza</option>
+                        </select>
+                        <label for="select_filtro">Filtrar por Categoria</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="txt_buscar" placeholder="Buscar">
+                        <label for="txt_buscar">Buscar por Nombre</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="select_orden">
+                            <option value="">Sin ordenar</option>
+                            <option value="asc">Precio Ascendente</option>
+                            <option value="desc">Precio Descendente</option>
+                        </select>
+                        <label for="select_orden">Ordenar por Precio</label>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    
+
+    <div class="text-center mb-3">
+        <button class="btn btn-info btn-lg" id="btn_estadisticas">Ver Estadisticas</button>
+    </div>
+
+        <div id="resultado_estadisticas"></div>
+
+        <!-- Tabla -->
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h5>Lista de Productos</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Categoria</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla_productos">
+                        <tr>
+                            <td colspan="5" class="text-center">No hay productos</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+    <script src="./public/vendor/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+    <script src="./public/vendor/bootstrap-5.0.2-dist/jquery/jquery-3.7.1.min.js"></script>
+    <script src="./public/js/main.js"></script>
 </body>
 </html>
