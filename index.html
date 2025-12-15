@@ -1,126 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GESTION DE PRODUCTOS</title>
-    
-    <link rel="stylesheet" href="./public/vendor/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gestor de Productos con jQuery</title>
+
+  <link rel="stylesheet" href="./public/vendor/bootstrap-5.0.2-dist/css/bootstrap.min.css">
 </head>
-<body>
 
-    <div class="container mt-5">
-        
-        <h1 class="text-center mb-4">GESTION DE PRODUCTOS</h1>
+<body class="bg-light">
+  <div class="container py-4">
 
-        <!-- Formulario -->
-        <div class="card mb-4">
-            <div class="card-header bg-primary text-white">
-                <h5>Registrar Producto</h5>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="txt_nombre" placeholder="Nombre">
-                            <label for="txt_nombre">Nombre del Producto</label>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-floating mb-3">
-                            <input type="number" step="0.01" class="form-control" id="txt_precio" placeholder="0.00">
-                            <label for="txt_precio">Precio</label>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-floating mb-3">
-                            <select class="form-select" id="select_categoria">
-                                <option value="" selected disabled>Seleccione...</option>
-                                <option value="Abarrotes">Abarrotes</option>
-                                <option value="Bebidas">Bebidas</option>
-                                <option value="Limpieza">Limpieza</option>
-                            </select>
-                            <label for="select_categoria">Categoria</label>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <button id="btn_agregar" class="btn btn-success w-100" style="height: 58px;">Agregar</button>
-                    </div>
-                </div>
-                
-                <div id="alerta"></div>
-            </div>
-        </div>
-
-<!-- Filtros -->
-    <div class="card mb-4">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-floating mb-3">
-                        <select class="form-select" id="select_filtro">
-                            <option value="Todos">Todos</option>
-                            <option value="Abarrotes">Abarrotes</option>
-                            <option value="Bebidas">Bebidas</option>
-                            <option value="Limpieza">Limpieza</option>
-                        </select>
-                        <label for="select_filtro">Filtrar por Categoria</label>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="txt_buscar" placeholder="Buscar">
-                        <label for="txt_buscar">Buscar por Nombre</label>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-floating mb-3">
-                        <select class="form-select" id="select_orden">
-                            <option value="">Sin ordenar</option>
-                            <option value="asc">Precio Ascendente</option>
-                            <option value="desc">Precio Descendente</option>
-                        </select>
-                        <label for="select_orden">Ordenar por Precio</label>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="mb-3">
+      <h1 class="h3 mb-1">Gestor de Productos</h1>
     </div>
 
-    <div class="text-center mb-3">
-        <button class="btn btn-info btn-lg" id="btn_estadisticas">Ver Estadisticas</button>
-    </div>
+    <!-- Alertas -->
+    <div id="alerta"></div>
 
-        <div id="resultado_estadisticas"></div>
+    <div class="row g-3">
 
-        <!-- Tabla -->
-        <div class="card">
-            <div class="card-header bg-success text-white">
-                <h5>Lista de Productos</h5>
+      <!-- Formulario -->
+      <div class="col-12 col-lg-4">
+        <div class="card shadow-sm">
+          <div class="card-header fw-semibold">Registro de productos</div>
+          <div class="card-body">
+
+            <div class="mb-3">
+              <label class="form-label" for="txt_nombre">Nombre del producto</label>
+              <input type="text" class="form-control" id="txt_nombre">
             </div>
-            <div class="card-body">
-                <table class="table table-bordered">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Precio</th>
-                            <th>Categoria</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tabla_productos">
-                        <tr>
-                            <td colspan="5" class="text-center">No hay productos</td>
-                        </tr>
-                    </tbody>
-                </table>
+
+            <div class="mb-3">
+              <label class="form-label" for="txt_precio">Precio</label>
+              <input type="number" class="form-control" id="txt_precio" step="0.01" min="0">
             </div>
+
+            <div class="mb-3">
+              <label class="form-label" for="select_categoria">Categoria</label>
+              <select class="form-select" id="select_categoria">
+                <option value="">Seleccione</option>
+                <option value="Abarrotes">Abarrotes</option>
+                <option value="Bebidas">Bebidas</option>
+                <option value="Limpieza">Limpieza</option>
+              </select>
+            </div>
+
+            <button type="button" class="btn btn-primary w-100" id="btn_agregar">
+              Agregar producto
+            </button>
+
+          </div>
         </div>
-        
+      </div>
+
+      <!-- Agregar tabla + filtros y estadisticas -->
+
     </div>
-    <script src="./public/vendor/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
-    <script src="./public/vendor/bootstrap-5.0.2-dist/jquery/jquery-3.7.1.min.js"></script>
-    <script src="./public/js/main.js"></script>
+  </div>
+
 </body>
 </html>
