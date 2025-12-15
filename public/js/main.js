@@ -163,3 +163,52 @@ function eliminarProducto(id) {
         mostrarTabla();
     }
 }
+// Implementar funcion calcular estadisticas
+
+// Evento Click - Estadisticas
+$('#btn_estadisticas').click(function() {
+    calcularEstadisticas();
+});
+
+// Funcion calcular estadisticas
+function calcularEstadisticas() {
+    
+    if (productos.length === 0) {
+        $('#resultado_estadisticas').html('<div class="alert alert-info">No hay productos, agregue uno y vuelva a intentarlo</div>');
+        return;
+    }
+
+    var total = productos.length;
+    var suma = 0;
+    var mas_caro = productos[0];
+    var mas_barato = productos[0];
+    var i;
+
+    for (i = 0; i < productos.length; i++) {
+        suma = suma + productos[i].precio;
+
+        if (productos[i].precio > mas_caro.precio) {
+            mas_caro = productos[i];
+        }
+
+        if (productos[i].precio < mas_barato.precio) {
+            mas_barato = productos[i];
+        }
+    }
+
+    var promedio = suma / total;
+
+    var resultado = '<div class="card mb-4">' +
+                        '<div class="card-body bg-success text-white">' +
+                            '<h5>Estadisticas</h5>' +
+                            '<div class="row text-center mt-3">' +
+                                '<div class="col-md-3"><h3>' + total + '</h3><p>Total</p></div>' +
+                                '<div class="col-md-3"><h3>$' + promedio.toFixed(2) + '</h3><p>Promedio</p></div>' +
+                                '<div class="col-md-3"><h3>' + mas_caro.nombre + '</h3><p>Mas Caro</p></div>' +
+                                '<div class="col-md-3"><h3>' + mas_barato.nombre + '</h3><p>Mas Barato</p></div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>';
+
+    $('#resultado_estadisticas').html(resultado);
+}
